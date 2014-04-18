@@ -10,6 +10,7 @@ var glob      = require('plumber-glob');
 var requireJS = require('plumber-requirejs');
 var uglifyJS  = require('plumber-uglifyjs')();
 var write     = require('plumber-write');
+var amdclean  = require('amdclean');
 
 module.exports = function (pipelines) {
   var mainRequireJS = requireJS({
@@ -23,6 +24,13 @@ module.exports = function (pipelines) {
           'event-emitter': {
               exports: 'EventEmitter'
           }
+      },
+      onBuildWrite: function (name, path, contents) {
+        return amdclean.clean(contents);
+      },
+      wrap: {
+        startFile: 'umd/top.frag',
+        endFile: 'umd/bottom.frag'
       }
   });
 

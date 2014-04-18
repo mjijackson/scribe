@@ -13,7 +13,8 @@
     "plumber-write": "~0.2.0",
     "q": "~1.0.0",
     "request": "~2.33.0",
-    "selenium-webdriver": "^2.41.0"
+    "selenium-webdriver": "^2.41.0",
+    "amdclean": "^1.5.0"
   },
   "scripts": {
     "test": "node test/runner",
